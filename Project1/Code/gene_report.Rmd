@@ -1,0 +1,70 @@
+---
+title: "Project1"
+author: "Wenru Zhou"
+date: "9/23/2018"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+
+ 
+```{r,results='hide',echo=FALSE,message=FALSE,warning=FALSE}
+options(scipen=999)
+
+library(Hmisc)
+library(knitr)
+library(devtools)
+library(Table1)
+
+source('DataClean.R')
+source('Macro.R')
+source('Tables.R')
+
+
+
+#install_github("palmercl/Table1")
+
+```
+
+## Project 1
+## Longitudinal assessment of the effect of hard drug use on the effect of HARRT in a multicenter AIDS cohort study
+
+# Data introduction
+
+Hard drug missing at baseline is `r missing_hard_drugs_count` (`r missing_hard_drugs_rate*100`%).
+
+Unknown BMI:  `r unknown_bmi_count`(`r unknown_bmi_rate*100`%)
+
+Unknown income:  `r unknown_income_count`(`r unknown_income_rate*100`%)
+
+**Table 0. Missing**
+***Baseline***
+```{r,results='asis',echo=FALSE,warning=FALSE,message=FALSE}
+kable(con_missing0, align=c('l','c','c'))
+
+```
+
+***2 year visit***
+```{r,results='asis',echo=FALSE,warning=FALSE,message=FALSE}
+kable(con_missing2, align=c('l','c','c'))
+
+```
+
+**Table 1. Demographic characteristics**
+***Baseline***
+```{r,results='asis',echo=FALSE,warning=FALSE,message=FALSE}
+kable(con_final_0, align=c('l','c','c'))
+```
+
+***2 year visit***
+```{r,results='asis',echo=FALSE,warning=FALSE,message=FALSE}
+kable(con_final_2, align=c('l','c','c'))
+```
+
+
+**Table 2. Difference**
+***Baseline and year 2 visit***
+```{r,results='asis',echo=FALSE,warning=FALSE,message=FALSE}
+kable(con_diff, align=c('l','c','c'))
+```
